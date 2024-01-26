@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cryptor">
+        <item>TEA</item>
+        <item>BASE64</item>
+    </string-array>
+
+    <string-array name="packages">
+        <item>QQ</item>
+        <item>QHD</item>
+        <item>QLite</item>
+        <item>Tim</item>
+        <item>WeGame</item>
+        <item>QMusic</item>
+        <item>QSafe</item>
+    </string-array>
+</resources>

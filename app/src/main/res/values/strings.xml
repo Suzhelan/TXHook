@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">TXHook</string>
+
+    <string name="tab_catch_packet">抓包</string>
+    <string name="tab_analyse">分析</string>
+    <string name="tab_values">数据</string>
+    <string name="tab_tools">工具</string>
+    <string name="tab_setting">设置</string>
+
+    <string name="tab_byte_check">校验</string>
+    <string name="tab_transform">转换</string>
+    <string name="tab_cryptor">加解密</string>
+
+    <string name="catching_info">抓包信息</string>
+
+    <string name="base_info">基础信息</string>
+    <string name="qq_token">最后QQ操作者TOKEN</string>
+    <string name="info">信息</string>
+    <string name="content">内容</string>
+    <string name="as_protobuf">作为Protobuf分析</string>
+    <string name="as_tars">作为Jce分析</string>
+
+    <string name="jsonViewer_icon_plus">expand</string>
+    <string name="jsonViewer_icon_minus">collapse</string>
+    <string name="one_anayse">一键分析</string>
+    <string name="analyse_jce_protobuf">Jce/Protobuf解析</string>
+    <string name="empty_packet">包体为空</string>
+    <string name="clear_all">清空</string>
+    <string name="warn_input">点击这里输入你要分析的内容</string>
+    <string name="byte_compare_tools">字节校验相关工具</string>
+    <string name="byte_check">字节校验工具</string>
+    <string name="example_md5_hex">待输入内容</string>
+    <string name="copy">复制</string>
+    <string name="warn_check_byte">请输入你要校验的内容的HEX</string>
+    <string name="back">返回</string>
+    <string name="length">长度：</string>
+    <string name="_0">0</string>
+    <string name="warn_trans">请输入你要转换的数据</string>
+    <string name="hex2str">HEX转字符串</string>
+    <string name="str2hex">字符串转HEX</string>
+    <string name="gzip">GZIP压缩</string>
+    <string name="ungzip">GZIP解压</string>
+    <string name="deflate_zip">DEFLATE压缩</string>
+    <string name="un_deflate_zip">DEFLATE解压</string>
+    <string name="warn_cryptor">请输入要加解密数据的HEX</string>
+    <string name="encode">加密</string>
+    <string name="decode">解密</string>
+    <string name="warn_input_key">请输入密钥(留空将自动尝试密钥)</string>
+    <string name="fillter">过滤</string>
+    <string name="search_hint_cmd">请输入要过滤的CMD</string>
+    <string name="input_search">请输入要搜索的CMD</string>
+    <string name="catch_content">抓包内容：</string>
+    <string name="receive">receive</string>
+    <string name="start_catch">点击右下角按钮开始抓包</string>
+    <string name="cancel">取消</string>
+    <string name="cmd">指令名称</string>
+    <string name="seq_name">自增序列</string>
+    <string name="packet_size">包体大小</string>
+    <string name="uin">用户标识</string>
+    <string name="time">操作时间</string>
+    <string name="msg_cookie">会话标识</string>
+    <string name="packet_type">会话类型</string>
+    <string name="plus_info">附加信息</string>
+    <string name="hex">Hex字节查看</string>
+    <string name="jce">JCE</string>
+    <string name="protobuf">Protobuf</string>
+    <string name="ecdh">Ecdh</string>
+    <string name="publickey">PublicKey</string>
+    <string name="sharekey">ShareKey</string>
+    <string name="pushapi">HttpAPI开关</string>
+    <string name="local_address">127.0.0.1</string>
+    <string name="返回上一级">back_desc</string>
+    <string name="none_data">没有任何数据</string>
+    <string name="bdh_setting">BDH设置</string>
+    <string name="merge">merge</string>
+    <string name="noData">暂无数据</string>
+    <string name="protocolData">协议数据</string>
+</resources>

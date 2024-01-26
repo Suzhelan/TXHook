@@ -1,0 +1,14 @@
+//
+// 重新编译qq安装包实现无root直接hook by: 秋洛
+//
+
+#ifndef TXHOOK_XPOSED_HOOK_H
+#define TXHOOK_XPOSED_HOOK_H
+
+
+class xposed_hook {
+
+};
+
+
+#endif //TXHOOK_XPOSED_HOOK_H

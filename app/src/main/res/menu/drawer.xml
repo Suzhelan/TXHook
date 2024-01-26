@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/main_group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/magisk"
+            android:icon="@drawable/icon_mobileqq"
+            android:title="主页" />
+
+        <item
+            android:id="@+id/superuser"
+            android:icon="@drawable/icon_mobileqq"
+            android:title="标题"
+            android:visible="false" />
+        <item
+            android:id="@+id/magiskhide"
+            android:icon="@drawable/icon_mobileqq"
+            android:title="隐藏" />
+
+    </group>
+
+    <group
+        android:id="@+id/second_group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/modules"
+            android:icon="@drawable/icon_mobileqq"
+            android:title="模块" />
+
+        <item
+            android:id="@+id/downloads"
+            android:icon="@drawable/icon_mobileqq"
+            android:title="下载" />
+
+    </group>
+
+    <group
+        android:id="@+id/third_group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/log"
+            android:icon="@drawable/icon_mobileqq"
+            android:title="日志" />
+        <item
+            android:id="@+id/settings"
+            android:checkable="false"
+            android:icon="@drawable/icon_mobileqq"
+            android:title="设置" />
+
+        <item
+            android:id="@+id/app_about"
+            android:checkable="false"
+            android:icon="@drawable/icon_mobileqq"
+            android:title="关于" />
+
+    </group>
+</menu>
