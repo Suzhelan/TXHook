@@ -6,8 +6,6 @@ plugins {
 android {
     compileSdk 29
 
-    namespace "mov.ore.server"
-
     defaultConfig {
         minSdk 21
         targetSdk 29

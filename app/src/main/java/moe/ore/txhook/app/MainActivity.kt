@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -28,10 +27,7 @@ import moe.ore.android.util.StatusBarUtil
 import moe.ore.script.Consist
 import moe.ore.txhook.EntryActivity
 import moe.ore.txhook.R
-import moe.ore.txhook.app.fragment.DataFragment
-import moe.ore.txhook.app.fragment.MainFragment
-import moe.ore.txhook.app.fragment.SettingFragment
-import moe.ore.txhook.app.fragment.ToolsFragment
+import moe.ore.txhook.app.fragment.*
 import moe.ore.txhook.databinding.ActivityMainBinding
 import moe.ore.txhook.helper.HexUtil
 import java.security.KeyFactory

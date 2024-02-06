@@ -12,8 +12,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import moe.ore.android.EasyActivity
 import moe.ore.android.util.StatusBarUtil
 import moe.ore.txhook.R
-import moe.ore.txhook.app.fragment.MainFragment
-import moe.ore.txhook.app.fragment.PacketHexFragment
+import moe.ore.txhook.app.fragment.*
 import moe.ore.txhook.databinding.ActivityPacketBinding
 import moe.ore.txhook.databinding.FragmentPacketInfoBinding
 import moe.ore.txhook.helper.toHexString

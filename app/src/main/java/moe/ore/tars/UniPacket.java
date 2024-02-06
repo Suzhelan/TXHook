@@ -56,13 +56,96 @@ import moe.ore.txhook.helper.KotlinExtKt;
 public class UniPacket {
     static HashMap<String, byte[]> newCache__tempdata = null;
     static HashMap<String, HashMap<String, byte[]>> cache__tempdata = null;
-    private final RequestPacket _package = new RequestPacket();
+
     private int version = 3;
+
     private int requestId = 0;
     private String servantName = "";
     private String funcName = "";
+
+    private final RequestPacket _package = new RequestPacket();
     private HashMap<String, byte[]> _newData = new HashMap<>();
     private HashMap<String, HashMap<String, byte[]>> _data = new HashMap<>();
+
+    public void put(@NotNull TarsBase base) {
+        servantName = base.servantName();
+        funcName = base.funcName();
+        String req = base.reqName();
+        if (servantName == null || servantName.isEmpty() || funcName == null || funcName.isEmpty() || req.isEmpty()) {
+            KotlinExtKt.runtimeError("servant or func or req name is null", null);
+        }
+        this.put(req, base);
+    }
+
+    public <T extends TarsBase> void put(String mapName, T t) {
+        if (mapName == null) {
+            throw new IllegalArgumentException("put key can not is null");
+        } else if (t == null) {
+            throw new IllegalArgumentException("put value can not is null");
+        } else if (t instanceof Set) {
+            throw new IllegalArgumentException("can not support Set");
+        } else {
+            TarsOutputStream out = new TarsOutputStream();
+            out.setServerEncoding(StandardCharsets.UTF_8);
+            out.write(t, 0);
+            byte[] data = out.toByteArray();
+            if (this.version == 3) {
+                this._newData.put(mapName, data);
+            } else {
+                TarsOutputStream stream = new TarsOutputStream();
+                stream.write(t, 0);
+                byte[] bytes = stream.toByteArray();
+                HashMap<String, byte[]> map = new HashMap<>(1);
+                ArrayList<String> list = new ArrayList<>(1);
+                map.put(transTypeList(list), bytes);
+                this._data.put(mapName, map);
+            }
+        }
+    }
+
+    public <T extends TarsBase> T findByClass(String mapName, T base) {
+        TarsInputStream input = new TarsInputStream(find(mapName));
+        return input.read(base, 0, true);
+    }
+
+    public byte[] find(String mapName) {
+        if (this._newData.containsKey(mapName)) {
+            return this._newData.get(mapName);
+        } else {
+            Map<String, byte[]> map = this._data.get(mapName);
+            for (Map.Entry<String, byte[]> content : map.entrySet()) {
+                return content.getValue();
+            }
+        }
+        return null;
+    }
+
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
+    }
+
+    public byte[] encode() {
+        TarsOutputStream output = new TarsOutputStream();
+        if (this.version == 3) {
+            output.write(this._newData, 0);
+        } else {
+            output.write(this._data, 0);
+        }
+
+        byte[] data = output.toByteArray();
+        this._package.setVersion(3);
+        this._package.setFuncName(this.funcName);
+        this._package.setServantName(this.servantName);
+        this._package.setContext(new HashMap<>());
+        this._package.setStatus(new HashMap<>());
+        this._package.setBuffer(data);
+        this._package.setRequestId(requestId);
+        return _package.toByteArray();
+    }
 
     public static UniPacket decode(byte[] bytes) {
         return decode(bytes, 0);
@@ -156,86 +239,6 @@ public class UniPacket {
             builder.append(s);
         }
         return builder.toString();
-    }
-
-    public void put(@NotNull TarsBase base) {
-        servantName = base.servantName();
-        funcName = base.funcName();
-        String req = base.reqName();
-        if (servantName == null || servantName.isEmpty() || funcName == null || funcName.isEmpty() || req.isEmpty()) {
-            KotlinExtKt.runtimeError("servant or func or req name is null", null);
-        }
-        this.put(req, base);
-    }
-
-    public <T extends TarsBase> void put(String mapName, T t) {
-        if (mapName == null) {
-            throw new IllegalArgumentException("put key can not is null");
-        } else if (t == null) {
-            throw new IllegalArgumentException("put value can not is null");
-        } else if (t instanceof Set) {
-            throw new IllegalArgumentException("can not support Set");
-        } else {
-            TarsOutputStream out = new TarsOutputStream();
-            out.setServerEncoding(StandardCharsets.UTF_8);
-            out.write(t, 0);
-            byte[] data = out.toByteArray();
-            if (this.version == 3) {
-                this._newData.put(mapName, data);
-            } else {
-                TarsOutputStream stream = new TarsOutputStream();
-                stream.write(t, 0);
-                byte[] bytes = stream.toByteArray();
-                HashMap<String, byte[]> map = new HashMap<>(1);
-                ArrayList<String> list = new ArrayList<>(1);
-                map.put(transTypeList(list), bytes);
-                this._data.put(mapName, map);
-            }
-        }
-    }
-
-    public <T extends TarsBase> T findByClass(String mapName, T base) {
-        TarsInputStream input = new TarsInputStream(find(mapName));
-        return input.read(base, 0, true);
-    }
-
-    public byte[] find(String mapName) {
-        if (this._newData.containsKey(mapName)) {
-            return this._newData.get(mapName);
-        } else {
-            Map<String, byte[]> map = this._data.get(mapName);
-            for (Map.Entry<String, byte[]> content : map.entrySet()) {
-                return content.getValue();
-            }
-        }
-        return null;
-    }
-
-    public int getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(int requestId) {
-        this.requestId = requestId;
-    }
-
-    public byte[] encode() {
-        TarsOutputStream output = new TarsOutputStream();
-        if (this.version == 3) {
-            output.write(this._newData, 0);
-        } else {
-            output.write(this._data, 0);
-        }
-
-        byte[] data = output.toByteArray();
-        this._package.setVersion(3);
-        this._package.setFuncName(this.funcName);
-        this._package.setServantName(this.servantName);
-        this._package.setContext(new HashMap<>());
-        this._package.setStatus(new HashMap<>());
-        this._package.setBuffer(data);
-        this._package.setRequestId(requestId);
-        return _package.toByteArray();
     }
 
     public String getServantName() {

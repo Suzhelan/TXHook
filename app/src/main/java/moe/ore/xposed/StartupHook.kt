@@ -44,7 +44,6 @@ object StartupHook {
                         }
                     }
                 }
-
                 QQMUSIC -> {
                     val MusicApplication = classLoader!!
                         .loadClass("com.tencent.qqmusic.MusicApplication")
@@ -62,7 +61,6 @@ object StartupHook {
                         }
                     }
                 }
-
                 QQSAFE -> {
                     val RqdApplication = classLoader!!
                         .loadClass("com.tencent.token.global.RqdApplication")

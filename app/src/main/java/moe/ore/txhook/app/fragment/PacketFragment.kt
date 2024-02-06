@@ -34,6 +34,7 @@ import moe.ore.txhook.helper.toHexString
 import moe.ore.xposed.helper.SourceFinder
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.*
 import kotlin.concurrent.thread
 
 class PacketHexFragment : Fragment() {

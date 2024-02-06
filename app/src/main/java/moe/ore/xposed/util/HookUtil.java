@@ -29,9 +29,9 @@ import moe.ore.xposed.ws.ArkWebSocket;
 public final class HookUtil {
     private static final Uri URI_GET_TXHOOK_STATE = Uri.parse("content://" + CatchProvider.MY_URI + "/" + Consist.GET_TXHOOK_STATE);
     public static WeakReference<Context> contextWeakReference;
+    private static ArkWebSocket webSocket = null;
     // private static final Uri URI_GET_TXHOOK_WS_STATE = Uri.parse("content://" + CatchProvider.MY_URI + "/" + Consist.GET_TXHOOK_WS_STATE);
     public static ContentResolver contentResolver;
-    private static ArkWebSocket webSocket = null;
 
     public static void sendTo(Uri uri, ContentValues contentValues, int source) {
         try {
@@ -106,7 +106,6 @@ public final class HookUtil {
             HttpUtil.INSTANCE.postJson("http://" + url + "/" + action, jsonObject.toString());
         }
     }
-
     public static String getApiUrl() {
         String url = ConfigPusher.INSTANCE.get(KEY_PUSH_API);
         if (contentResolver != null) {

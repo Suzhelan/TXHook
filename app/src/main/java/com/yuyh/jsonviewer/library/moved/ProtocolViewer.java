@@ -17,50 +17,9 @@ import org.json.JSONObject;
  */
 public class ProtocolViewer extends RecyclerView {
     int mode;
-    float oldDist;
+
     private OnBindListener onBindListener = null;
     private BaseJsonViewerAdapter mAdapter;
-    private OnItemTouchListener touchListener = new OnItemTouchListener() {
-        @Override
-        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent event) {
-            switch (event.getAction() & event.getActionMasked()) {
-                case MotionEvent.ACTION_DOWN:
-                    mode = 1;
-                    break;
-                case MotionEvent.ACTION_UP:
-                    mode = 0;
-                    break;
-                case MotionEvent.ACTION_POINTER_UP:
-                    mode -= 1;
-                    break;
-                case MotionEvent.ACTION_POINTER_DOWN:
-                    oldDist = spacing(event);
-                    mode += 1;
-                    break;
-
-                case MotionEvent.ACTION_MOVE:
-                    if (mode >= 2) {
-                        float newDist = spacing(event);
-                        if (Math.abs(newDist - oldDist) > 0.5f) {
-                            zoom(newDist / oldDist);
-                            oldDist = newDist;
-                        }
-                    }
-                    break;
-            }
-            return false;
-        }
-
-        @Override
-        public void onTouchEvent(RecyclerView rv, MotionEvent event) {
-
-        }
-
-        @Override
-        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-        }
-    };
 
     public ProtocolViewer(Context context) {
         this(context, null);
@@ -187,6 +146,48 @@ public class ProtocolViewer extends RecyclerView {
             }
         }
     }
+    float oldDist;
+    private OnItemTouchListener touchListener = new OnItemTouchListener() {
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent event) {
+            switch (event.getAction() & event.getActionMasked()) {
+                case MotionEvent.ACTION_DOWN:
+                    mode = 1;
+                    break;
+                case MotionEvent.ACTION_UP:
+                    mode = 0;
+                    break;
+                case MotionEvent.ACTION_POINTER_UP:
+                    mode -= 1;
+                    break;
+                case MotionEvent.ACTION_POINTER_DOWN:
+                    oldDist = spacing(event);
+                    mode += 1;
+                    break;
+
+                case MotionEvent.ACTION_MOVE:
+                    if (mode >= 2) {
+                        float newDist = spacing(event);
+                        if (Math.abs(newDist - oldDist) > 0.5f) {
+                            zoom(newDist / oldDist);
+                            oldDist = newDist;
+                        }
+                    }
+                    break;
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent event) {
+
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
+    };
 
     private void zoom(float f) {
         setTextSize(BaseJsonViewerAdapter.TEXT_SIZE_DP * f);

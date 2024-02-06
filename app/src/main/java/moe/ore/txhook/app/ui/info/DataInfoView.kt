@@ -61,7 +61,7 @@ class DataInfoView @JvmOverloads constructor(
                 it.setMargins(0, top, 0, top)
             }
             noDataText.gravity = CENTER
-            noDataText.setTextAppearance(androidx.constraintlayout.widget.R.style.TextAppearance_AppCompat_Large)
+            noDataText.setTextAppearance(R.style.TextAppearance_AppCompat_Large)
             noDataText.setTextColor(ActivityCompat.getColor(context, R.color.tx_base_info))
             noDataText.setText(R.string.noData)
             noDataText.visibility = GONE
@@ -101,7 +101,8 @@ class DataInfoView @JvmOverloads constructor(
         var icon: ImageView? = null
         if (itemInfo.leftIcon != 0) {
             val licon = ImageView(context)
-            item.addView(licon, RelativeLayout.LayoutParams(
+            item.addView(
+                licon, RelativeLayout.LayoutParams(
                 dip2px(context, 22f), dip2px(context, 22f)
             ).also {
                 it.addRule(CENTER_VERTICAL)
@@ -160,7 +161,7 @@ class DataInfoView @JvmOverloads constructor(
         itemList.clear()
     }
 
-    private var fID = com.google.android.material.R.id.NO_DEBUG
+    private var fID = R.id.NO_DEBUG
 
     private fun findUnusedId(): Int {
         while (findViewById<View?>(++fID) != null) {

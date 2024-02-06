@@ -73,13 +73,11 @@ constructor(buffer: ByteArray, pos: Int = 0) {
                 }
 
             }
-
             WireFormat.WIRETYPE_START_GROUP -> {
                 val json = NewJsonObject()
                 printUnknownFields(value as UnknownFieldSet, json)
                 objects.put(number.toString(), json)
             }
-
             else -> throw RuntimeException("can not to parse the protobuf data")
         }
     }

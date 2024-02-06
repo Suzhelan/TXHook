@@ -195,7 +195,6 @@ object AndroidCompat {
                 ii = if (ii <= 0) ii + 82 else ii shl 4653
                 oooooooooooo(i)
             }
-
             -1163521 -> ooooooooooo(oooooooooooo(oooooooooooo(oooooooooooo(i))))
             70204785 -> return -445115563
             (1636939532 shl 3) + 1 -> return oooooooooo(484656)
@@ -265,7 +264,6 @@ object AndroidCompat {
                 ii = if (ii <= 0) ii + 82 else ii shl 4653
                 oooooooooooo(i)
             }
-
             -461258460 -> ooooooooooo(oooooooooooo(oooooooooooo(oooooooooooo(i))))
             else -> ii + ooooooooooooooo(ii + 256) // result: 0
         }

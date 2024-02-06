@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="18dp"
     tools:context=".app.fragment.PacketInfoFragment">
@@ -181,24 +181,24 @@
 
     <moe.ore.txhook.app.ui.info.DataInfoView
         android:id="@+id/base_info"
+        android:layout_margin="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp"
+        app:cardElevation="1dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="18dp"
-        app:cardElevation="1dp"
         app:contentPadding="16dp" />
 
     <moe.ore.txhook.app.ui.info.DataInfoView
         android:id="@+id/plus_info"
+        android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
+        android:layout_marginRight="2dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="2dp"
+        app:cardElevation="1dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="18dp"
-        app:cardElevation="1dp"
         app:contentPadding="16dp" />
 
 </LinearLayout>

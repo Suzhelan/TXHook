@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="14dp"
     tools:context=".app.fragment.SettingFragment">
@@ -56,13 +56,11 @@
         android:layout_height="wrap_content"
         app:leftText="输出QQ日志到外部"
         app:rightStyle="iconCheck" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,19 +70,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/pushapi"
                 android:textColor="@color/accent"
+                android:text="@string/pushapi"
                 android:textStyle="bold" />
-
             <TextView
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/accent"
                 android:layout_weight="1"
                 android:gravity="right"
                 android:paddingRight="16dp"
                 android:text="@string/local_address"
-                android:textColor="@color/accent"
                 tools:ignore="RtlHardcoded,RtlSymmetry" />
         </LinearLayout>
 

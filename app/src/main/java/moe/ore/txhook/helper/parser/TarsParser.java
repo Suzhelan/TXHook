@@ -21,8 +21,9 @@ import moe.ore.txhook.helper.DebugUtil;
 import moe.ore.txhook.helper.HexUtil;
 
 public class TarsParser {
-    Charset sServerEncoding = StandardCharsets.UTF_8;
     private ByteBuffer bs;
+
+    Charset sServerEncoding = StandardCharsets.UTF_8;
 
     public TarsParser() {
 
@@ -39,17 +40,6 @@ public class TarsParser {
     public TarsParser(byte[] bs, int pos) {
         this.bs = ByteBuffer.wrap(bs);
         this.bs.position(pos);
-    }
-
-    public static int readHead(TarsParser.HeadData hd, ByteBuffer bb) {
-        byte b = bb.get();
-        hd.type = (byte) (b & 15);
-        hd.tag = ((b & (15 << 4)) >> 4);
-        if (hd.tag == 15) {
-            hd.tag = (bb.get() & 0x00ff);
-            return 2;
-        }
-        return 1;
     }
 
     public NewJsonObject start() {
@@ -341,6 +331,17 @@ public class TarsParser {
     public void wrap(byte[] bs) {
         // this.bs = ByteBuffer.wrap(bs);
         this.bs = ByteBuffer.wrap(bs);
+    }
+
+    public static int readHead(TarsParser.HeadData hd, ByteBuffer bb) {
+        byte b = bb.get();
+        hd.type = (byte) (b & 15);
+        hd.tag = ((b & (15 << 4)) >> 4);
+        if (hd.tag == 15) {
+            hd.tag = (bb.get() & 0x00ff);
+            return 2;
+        }
+        return 1;
     }
 
     public void readHead(TarsParser.HeadData hd) {
@@ -1116,6 +1117,16 @@ public class TarsParser {
         }
     }
 
+    public static class HeadData {
+        public byte type;
+        public int tag;
+
+        public void clear() {
+            type = 0;
+            tag = 0;
+        }
+    }
+
     public int setServerEncoding(Charset se) {
         sServerEncoding = se;
         return 0;
@@ -1127,15 +1138,5 @@ public class TarsParser {
 
     public byte[] toByteArray() {
         return bs.array();
-    }
-
-    public static class HeadData {
-        public byte type;
-        public int tag;
-
-        public void clear() {
-            type = 0;
-            tag = 0;
-        }
     }
 }

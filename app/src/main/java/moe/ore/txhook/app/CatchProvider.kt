@@ -1,5 +1,4 @@
 @file:OptIn(ExperimentalSerializationApi::class)
-
 package moe.ore.txhook.app
 
 import android.content.ContentProvider
@@ -376,11 +375,9 @@ class FakeCursor : Cursor, HashMap<String, Any>() {
                 is String -> {
                     bundle.putString(it.key, it.value as String)
                 }
-
                 is ByteArray -> {
                     bundle.putByteArray(it.key, it.value as ByteArray)
                 }
-
                 is Number -> {
                     bundle.putInt(it.key, it.value as Int)
                 }

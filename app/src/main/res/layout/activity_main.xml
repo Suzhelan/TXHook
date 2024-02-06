@@ -10,26 +10,26 @@
     tools:context=".app.MainActivity">
 
     <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:elevation="20dp"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?actionBarSize"
+            android:layout_width="match_parent"
             app:title="@string/app_name" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabIndicatorHeight="3dp"
             app:tabGravity="center"
             app:tabIndicatorAnimationMode="linear"
-            app:tabIndicatorHeight="3dp"
             app:tabMode="auto" />
 
     </LinearLayout>
@@ -42,14 +42,14 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="@dimen/fab_margin"
             android:layout_marginBottom="16dp"
             app:backgroundTint="@color/accent"
             app:borderWidth="0dp"
             app:srcCompat="@drawable/icon_nocatch"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             tools:ignore="ContentDescription" />
 
         <androidx.viewpager2.widget.ViewPager2

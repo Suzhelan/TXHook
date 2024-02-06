@@ -1,11 +1,7 @@
 package moe.ore.txhook.app.fragment
 
 import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.Parcel
-import android.os.Parcelable
+import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -27,12 +23,7 @@ import moe.ore.android.toast.Toast
 import moe.ore.protocol.SSOLoginMerge
 import moe.ore.script.Consist
 import moe.ore.txhook.R
-import moe.ore.txhook.app.BdhActivity
-import moe.ore.txhook.app.CatchProvider
-import moe.ore.txhook.app.Md5Activity
-import moe.ore.txhook.app.PacketActivity
-import moe.ore.txhook.app.TeaActivity
-import moe.ore.txhook.app.TlvActivity
+import moe.ore.txhook.app.*
 import moe.ore.txhook.app.fragment.MainFragment.Packet.CREATOR.MQQ
 import moe.ore.txhook.app.fragment.MainFragment.Packet.CREATOR.QQHD
 import moe.ore.txhook.app.fragment.MainFragment.Packet.CREATOR.QQLITE
@@ -43,15 +34,11 @@ import moe.ore.txhook.app.fragment.MainFragment.Packet.CREATOR.WEGAME
 import moe.ore.txhook.databinding.FragmentMainBinding
 import moe.ore.txhook.databinding.ListElemBinding
 import moe.ore.txhook.forEachL
-import moe.ore.txhook.helper.EMPTY_BYTE_ARRAY
-import moe.ore.txhook.helper.FileUtil
-import moe.ore.txhook.helper.ZipUtil
-import moe.ore.xposed.helper.ConfigPusher
-import moe.ore.xposed.helper.IgnoreCmd
+import moe.ore.txhook.helper.*
+import moe.ore.xposed.helper.*
 import moe.ore.xposed.helper.entries.SavedToken
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 @ExperimentalSerializationApi
 class MainFragment : Fragment() {

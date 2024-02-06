@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".app.PacketActivity">
@@ -22,22 +22,22 @@
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/back"
                 android:gravity="center"
                 android:maxHeight="?actionBarSize"
                 android:padding="@dimen/appbar_padding"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/back"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/back"
                 android:gravity="center"
                 android:minHeight="?actionBarSize"
                 android:padding="@dimen/appbar_padding"
                 android:text="@string/catching_info"
+                android:layout_toEndOf="@id/back"
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                 android:textColor="#696969" />
 
@@ -58,10 +58,10 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:tabGravity="center"
-            app:tabIndicatorAnimationMode="linear"
             app:tabIndicatorColor="@color/accent"
             app:tabIndicatorHeight="3dp"
+            app:tabGravity="center"
+            app:tabIndicatorAnimationMode="linear"
             app:tabMode="auto"
             app:tabSelectedTextColor="@color/black" />
 

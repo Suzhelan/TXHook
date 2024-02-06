@@ -10,4 +10,6 @@ local.properties
 
 # Builds
 /build
+app/build/
+app/release/
 .externalNativeBuild

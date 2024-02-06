@@ -10,21 +10,21 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:name="moe.ore.android.Application"
-        android:extractNativeLibs="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="TXHookPro"
         android:largeHeap="true"
-        android:requestLegacyExternalStorage="true"
+        android:name="moe.ore.android.Application"
+        android:extractNativeLibs="true"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true"
         tools:replace="android:label">
 
         <activity
             android:name=".EntryActivity"
+            android:label="@string/app_name"
             android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/AppTheme.SplashTheme">
 
             <intent-filter>
@@ -56,10 +56,10 @@
             android:exported="true" />
 
         <provider
-            android:name=".app.CatchProvider"
             android:authorities="moe.ore.txhook.catch"
-            android:exported="true"
+            android:name=".app.CatchProvider"
             android:grantUriPermissions="true"
+            android:exported="true"
             tools:ignore="ExportedContentProvider" />
 
         <meta-data

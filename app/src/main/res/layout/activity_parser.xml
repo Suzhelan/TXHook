@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".app.ParserActivity">
@@ -22,21 +22,21 @@
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@android:color/transparent"
                 android:gravity="center"
                 android:maxHeight="?actionBarSize"
                 android:padding="@dimen/appbar_padding"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/back"
                 android:gravity="center"
                 android:minHeight="?actionBarSize"
                 android:padding="@dimen/appbar_padding"
                 android:text="@string/analyse_jce_protobuf"
+                android:layout_toEndOf="@id/back"
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                 android:textColor="#696969" />
 
@@ -45,11 +45,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:background="@android:color/transparent"
                 android:gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_save_24"
                 android:minHeight="?actionBarSize"
                 android:padding="@dimen/appbar_padding"
-                android:src="@drawable/ic_baseline_save_24"
                 android:visibility="gone" />
         </RelativeLayout>
 

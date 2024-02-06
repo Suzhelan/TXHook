@@ -248,13 +248,14 @@ public class JsonViewerAdapter extends BaseJsonViewerAdapter<JsonViewerAdapter.J
     class JsonItemClickListener implements View.OnClickListener {
         private final Context context;
         private final boolean isJsonObject;
+        private final boolean isJsonArray;
         private final JsonItemView itemView;
         private final boolean appendComma;
         private final int hierarchy;
+
         private final boolean originalHex;
-        private final boolean isJsonArray;
-        private Object value;
         private boolean isCollapsed = true;
+        private Object value;
 
         JsonItemClickListener(Object value, JsonItemView itemView, boolean appendComma, int hierarchy) {
             this.value = value;

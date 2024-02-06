@@ -26,10 +26,6 @@ import java.util.Random;
  * </pre>
  */
 public class Cryptor {
-    // 随机数对象
-    private static final Random random = new Random();
-    // 字节输出流
-    private final ByteArrayOutputStream bas;
     // 指向当前的明文块
     private byte[] plain;
     // 这指向前面一个明文块
@@ -50,26 +46,16 @@ public class Cryptor {
     // 这个表示当前解密开始的位置，之所以要这么一个变量是为了避免当解密到最后时
     // 后面已经没有数据，这时候就会出错，这个变量就是用来判断这种情况免得出错
     private int contextStart;
+    // 随机数对象
+    private static final Random random = new Random();
+    // 字节输出流
+    private final ByteArrayOutputStream bas;
 
     /**
      * 构造函数
      */
     public Cryptor() {
         bas = new ByteArrayOutputStream(8);
-    }
-
-    public static long getUnsignedInt(byte[] in, int offset, int len) {
-        long ret = 0L;
-        int end;
-        if (len > 8)
-            end = offset + 8;
-        else
-            end = offset + len;
-        for (int i = offset; i < end; i++) {
-            ret <<= 8;
-            ret |= in[i] & 0xff;
-        }
-        return ret & 0xffffffffL | ret >>> 32;
     }
 
     /**
@@ -240,6 +226,20 @@ public class Cryptor {
         return encrypt(in, 0, in.length, k);
     }
 
+    public static long getUnsignedInt(byte[] in, int offset, int len) {
+        long ret = 0L;
+        int end;
+        if (len > 8)
+            end = offset + 8;
+        else
+            end = offset + len;
+        for (int i = offset; i < end; i++) {
+            ret <<= 8;
+            ret |= in[i] & 0xff;
+        }
+        return ret & 0xffffffffL | ret >>> 32;
+    }
+
     private byte[] encipher(byte[] in) {
         // 迭代次数，16次
         int loop = 0x10;
@@ -276,11 +276,24 @@ public class Cryptor {
     }
 
     /**
+     * 写入一个整型到输出流，高字节优先
+     */
+    private void writeInt(int t) {
+        bas.write(t >>> 24);
+        bas.write(t >>> 16);
+        bas.write(t >>> 8);
+        bas.write(t);
+    }
+
+    /**
      * 解密从offset开始的8字节密文
      *
-     * @param in     密文字节数组
-     * @param offset 密文开始位置
-     * @return 明文
+     * @param in
+     *     密文字节数组
+     * @param offset
+     *     密文开始位置
+     * @return
+     *     明文
      */
     private byte[] decipher(byte[] in, int offset) {
         // 迭代次数，16次
@@ -319,23 +332,42 @@ public class Cryptor {
     }
 
     /**
-     * 写入一个整型到输出流，高字节优先
-     */
-    private void writeInt(int t) {
-        bas.write(t >>> 24);
-        bas.write(t >>> 16);
-        bas.write(t >>> 8);
-        bas.write(t);
-    }
-
-    /**
      * 解密
      *
-     * @param in 密文
-     * @return 明文
+     * @param in
+     *     密文
+     * @return
+     *     明文
      */
     private byte[] decipher(byte[] in) {
         return decipher(in, 0);
+    }
+
+    /**
+     * 解密8个字节
+     *
+     * @param in     密文字节数组
+     * @param offset 从何处开始解密
+     * @param len    密文的长度
+     * @return true表示解密成功
+     */
+    private void decrypt8Bytes(byte[] in, int offset, int len) {
+        // 这里第一步就是判断后面还有没有数据，没有就返回，如果有，就执行 crypt ^ prePlain
+        for (pos = 0; pos < 8; pos++) {
+            if (contextStart + pos >= len)
+                return;
+            prePlain[pos] ^= in[offset + crypt + pos];
+        }
+
+        // 好，这里执行到了 d(crypt ^ prePlain)
+        prePlain = decipher(prePlain);
+
+        // 解密完成，最后一步好像没做？
+        // 这里最后一步放到decrypt里面去做了，因为解密的步骤有点不太一样
+        // 调整这些变量的值先
+        contextStart += 8;
+        crypt += 8;
+        pos = 0;
     }
 
     /**
@@ -367,37 +399,11 @@ public class Cryptor {
     }
 
     /**
-     * 解密8个字节
-     *
-     * @param in     密文字节数组
-     * @param offset 从何处开始解密
-     * @param len    密文的长度
-     * @return true表示解密成功
-     */
-    private void decrypt8Bytes(byte[] in, int offset, int len) {
-        // 这里第一步就是判断后面还有没有数据，没有就返回，如果有，就执行 crypt ^ prePlain
-        for (pos = 0; pos < 8; pos++) {
-            if (contextStart + pos >= len)
-                return;
-            prePlain[pos] ^= in[offset + crypt + pos];
-        }
-
-        // 好，这里执行到了 d(crypt ^ prePlain)
-        prePlain = decipher(prePlain);
-
-        // 解密完成，最后一步好像没做？
-        // 这里最后一步放到decrypt里面去做了，因为解密的步骤有点不太一样
-        // 调整这些变量的值先
-        contextStart += 8;
-        crypt += 8;
-        pos = 0;
-    }
-
-    /**
      * 这是个随机因子产生器，用来填充头部的，如果为了调试，可以用一个固定值
      * 随机因子可以使相同的明文每次加密出来的密文都不一样
      *
-     * @return 随机因子
+     * @return
+     *     随机因子
      */
     private int rand() {
         return random.nextInt();

@@ -62,7 +62,6 @@ object MainHook {
     private val GlobalCache: HashMap<Int, Any> = hashMapOf()
     private val CodecWarpper = load("com.tencent.qphone.base.util.CodecWarpper")!!
     private val cryptor = load("oicq.wlogin_sdk.tools.cryptor")!!
-
     // private val fromService = load("com.tencent.qphone.base.remote.FromServiceMsg")!!
     private val EcdhCrypt = load("oicq.wlogin_sdk.tools.EcdhCrypt")
     private val Ticket = load("oicq.wlogin_sdk.request.Ticket")
@@ -960,7 +959,6 @@ object MainHook {
                         HookUtil.sendTo(defaultUri, util, source)
                     }
                 }
-
                 14 -> {
                     val seq = args[0] as Int
                     val cmd = args[5] as String
@@ -982,7 +980,6 @@ object MainHook {
                         HookUtil.sendTo(defaultUri, util, source)
                     }
                 }
-
                 16 -> {
                     val seq = args[0] as Int
                     val cmd = args[5] as String
@@ -1005,7 +1002,6 @@ object MainHook {
                         HookUtil.sendTo(defaultUri, util, source)
                     }
                 }
-
                 else -> {
                     log("hook到了个不知道什么东西")
                 }

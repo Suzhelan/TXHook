@@ -1,6 +1,6 @@
 package moe.ore.txhook.app.fragment
 
-import android.os.Bundle
+import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,16 +14,13 @@ import moe.ore.android.toast.Toast
 import moe.ore.android.util.FuckSettingItem
 import moe.ore.script.Consist
 import moe.ore.txhook.databinding.FragmentSettingBinding
-import moe.ore.xposed.helper.ConfigPusher
+import moe.ore.xposed.helper.*
 import moe.ore.xposed.helper.ConfigPusher.KEY_ECDH_DEFAULT
 import moe.ore.xposed.helper.ConfigPusher.KEY_ECDH_NEW_HOOK
 import moe.ore.xposed.helper.ConfigPusher.KEY_FORBID_TCP
 import moe.ore.xposed.helper.ConfigPusher.KEY_OPEN_LOG
 import moe.ore.xposed.helper.ConfigPusher.KEY_PUSH_API
 import moe.ore.xposed.helper.ConfigPusher.KEY_WS_ADDRESS
-import moe.ore.xposed.helper.DataKind
-import moe.ore.xposed.helper.DataPutter
-import moe.ore.xposed.helper.SourceFinder
 
 class SettingFragment : Fragment() {
     private lateinit var binding: FragmentSettingBinding

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     tools:context=".app.fragment.MainFragment">
 
     <RelativeLayout
+        android:maxHeight="45dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:maxHeight="45dp"
         tools:ignore="UselessParent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/icon_layout"
             android:layout_width="wrap_content"
+            android:id="@+id/icon_layout"
             android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
@@ -23,8 +23,8 @@
                 android:layout_height="55dp"
                 app:cardCornerRadius="36dp"
                 app:cardElevation="0dp"
-                app:cardUseCompatPadding="false"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:cardUseCompatPadding="false"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
@@ -38,15 +38,15 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/tips_view"
-                android:layout_width="30dp"
-                android:layout_height="13dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="3dp"
+                android:layout_width="30dp"
+                android:layout_height="13dp"
                 android:visibility="gone"
                 app:cardBackgroundColor="@color/tx_merge"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
                 app:cardUseCompatPadding="false"
+                app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
@@ -55,8 +55,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:padding="1dp"
                     android:text="@string/merge"
+                    android:padding="1dp"
                     android:textColor="@color/white"
                     android:textSize="8sp" />
             </androidx.cardview.widget.CardView>
@@ -126,8 +126,8 @@
                 android:id="@+id/size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
                 android:text="@string/tab_analyse"
                 android:textSize="12sp"
                 tools:ignore="RelativeOverlap" />
