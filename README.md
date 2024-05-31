@@ -1,6 +1,7 @@
 # TXHook 腾讯QQ协议分析工具
 
 ## 本人代为开源 原作者 [伏秋洛fuqiuluo](https://github.com/fuqiuluo)
+## 该仓库源码非最新并且存在问题 请使用未经修改的版本 [TXHookPro_V2.0.3](https://github.com/Suzhelan/TXHook/releases/tag/v2.0.3)
 
 ## 运行事项
 
